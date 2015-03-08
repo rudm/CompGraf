@@ -46,6 +46,7 @@ public class JDesenho extends JPanel {
 		//Primitiva.drawLine(g, 0, 50, 120, 50, xCentro, yCentro);
 		//Primitiva.drawLine(g, 50, 0, 50, 50, xCentro, yCentro);
 		
+		
 		Primitiva.drawLine(g, 10, 10, 10, 80, xCentro, yCentro);
 		Primitiva.drawLine(g, 10, 80, 80, 80, xCentro, yCentro);
 		Primitiva.drawLine(g, 80, 80, 80, 10, xCentro, yCentro);
