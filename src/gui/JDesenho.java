@@ -79,7 +79,30 @@ public class JDesenho extends JPanel {
 		//Primitiva.drawLine(g, -10, 80, 20, 10, xCentro, yCentro);
 		//Primitiva.drawLine(g, 20, 10, -80, 10, xCentro, yCentro);
 		
-
+		//
+		
+		/**
+		 * ########## TESTES PARA 6o OCTANTE ##########
+		 * **/
+		Primitiva.drawLine(g, -10, -10, -30, -90, xCentro, yCentro);
+		
+		/**
+		 * ########## TESTES PARA 7o OCTANTE ##########
+		 * **/
+//		Primitiva.drawLine(g, 10, -10, 30, -90, xCentro, yCentro);
+//		Primitiva.drawLine(g, -10, -10, 10, -90, xCentro, yCentro);
+//		Primitiva.drawLine(g, -30, -10, -10, -90, xCentro, yCentro);
+//		
+//		Primitiva.drawLine(g, -10, 40, 10, -40, xCentro, yCentro);
+//		
+//		Primitiva.drawLine(g, 10, 90, 30, 10, xCentro, yCentro);
+//		Primitiva.drawLine(g, -10, 90, 10, 10, xCentro, yCentro);
+//		Primitiva.drawLine(g, -30, 90, -10, 10, xCentro, yCentro);
+		
+		/**
+		 * ########## TESTES PARA 8o OCTANTE ##########
+		 * **/
+//		Primitiva.drawLine(g, 20, -10, 90, -70, xCentro, yCentro);
 	}
 	
 	private int[] retornaPontoCentralDoPainel() {
