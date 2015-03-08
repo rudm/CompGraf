@@ -28,43 +28,58 @@ public class JDesenho extends JPanel {
 		Primitiva.drawVLine(g, 0, (-1)*(this.getHeight()/2), this.getHeight(), xCentro, yCentro);
 		
 		g.setColor(Color.RED);
-		//PrimitivaBresenhan.drawLineBresenhan(g, 0, 0, 120, 8, JDesenho.this, xCentro, yCentro);
-		//PrimitivaBresenhan.drawLineBresenhan(g, 0, 0, 8, 120, JDesenho.this, xCentro, yCentro);
-		//Primitiva.drawLine(g, 0, 0, -8, 120, xCentro, yCentro);
-		//Primitiva.drawLine(g, 50, 0, 42, 120, xCentro, yCentro);
-		//PrimitivaBresenhan.drawLineBresenhan(g, 0, 0, -120, 8, JDesenho.this, xCentro, yCentro);
-		//PrimitivaBresenhan.drawLineBresenhan(g, 0, 0, -120, -8, JDesenho.this, xCentro, yCentro);
-		//PrimitivaBresenhan.drawLineBresenhan(g, 0, 0, -8, -120, JDesenho.this, xCentro, yCentro);
-		//Primitiva.drawLine(g, 0, 0, 8, -120, xCentro, yCentro);
-		//PrimitivaBresenhan.drawLineBresenhan(g, 0, 0, 120, -8, JDesenho.this, xCentro, yCentro);
 		
-		//Primitiva.drawLine(g, -120, -8, 0, 0, xCentro, yCentro);
-		//PrimitivaBresenhan.drawLineBresenhan(g, -120, 0, -112, 120, JDesenho.this, xCentro, yCentro);
-		
-		//PrimitivaBresenhan.drawLineBresenhan(g, -240, 0, -120, -8, JDesenho.this, xCentro, yCentro);
-		
-		//Primitiva.drawLine(g, 0, 50, 120, 50, xCentro, yCentro);
-		//Primitiva.drawLine(g, 50, 0, 50, 50, xCentro, yCentro);
+		Primitiva.drawLine(g, 10, 10, 10, 10, xCentro, yCentro);
+		Primitiva.drawLine(g, 40, 10, 40, 10, xCentro, yCentro);
+		Primitiva.drawLine(g, 10, 80, 10, 80, xCentro, yCentro);
 		
 		
-		Primitiva.drawLine(g, 10, 10, 10, 80, xCentro, yCentro);
-		Primitiva.drawLine(g, 10, 80, 80, 80, xCentro, yCentro);
-		Primitiva.drawLine(g, 80, 80, 80, 10, xCentro, yCentro);
-		Primitiva.drawLine(g, 80, 10, 10, 10, xCentro, yCentro);
+		/**
+		 * ########## TESTES PARA 2o OCTANTE ##########
+		 * **/
+		/*Primitiva.drawLine(g, 10, 10, 40, 100, xCentro, yCentro);
+		Primitiva.drawLine(g, -10, 10, 20, 100, xCentro, yCentro);
+		Primitiva.drawLine(g, -30, 10, 0, 100, xCentro, yCentro);
+		Primitiva.drawLine(g, -30, -10, 0, 80, xCentro, yCentro);
+		Primitiva.drawLine(g, -30, -100, 0, -10, xCentro, yCentro);
+		Primitiva.drawLine(g, -10, -100, 20, -10, xCentro, yCentro);
+		Primitiva.drawLine(g, 10, -100, 40, -10, xCentro, yCentro);
+		Primitiva.drawLine(g, -10, -80, 20, 10, xCentro, yCentro);*/
+		
+		/**
+		 * ########## TESTES PARA 3o OCTANTE ##########
+		 * **/
+		/*Primitiva.drawLine(g, 40, 10, 10, 80, xCentro, yCentro);
+		Primitiva.drawLine(g, 10, 10, -20, 80, xCentro, yCentro);
+		Primitiva.drawLine(g, -20, 10, -50, 80, xCentro, yCentro);
+		Primitiva.drawLine(g, -30, -10, -60, 60, xCentro, yCentro);
+		Primitiva.drawLine(g, -30, -80, -60, -10, xCentro, yCentro);
+		Primitiva.drawLine(g, 10, -80, -20, -10, xCentro, yCentro);
+		Primitiva.drawLine(g, 40, -80, 10, -10, xCentro, yCentro);
+		Primitiva.drawLine(g, 40, -30, 10, 40, xCentro, yCentro);*/
+		
+		/**
+		 * ########## TESTES PARA 4o OCTANTE ##########
+		 * **/
+		Primitiva.drawLine(g, 80, 10, 10, 40, xCentro, yCentro);
+		//Primitiva.drawLine(g, 10, 10, -20, 80, xCentro, yCentro);
+		//Primitiva.drawLine(g, -20, 10, -50, 80, xCentro, yCentro);
+		//Primitiva.drawLine(g, -30, -10, -60, 60, xCentro, yCentro);
+		//Primitiva.drawLine(g, -30, -80, -60, -10, xCentro, yCentro);
+		//Primitiva.drawLine(g, 10, -80, -20, -10, xCentro, yCentro);
+		//Primitiva.drawLine(g, 40, -80, 10, -10, xCentro, yCentro);
+		//Primitiva.drawLine(g, 40, -30, 10, 40, xCentro, yCentro);
+		
+		//Primitiva.drawLine(g, 10, 10, 10, 80, xCentro, yCentro);
+		//Primitiva.drawLine(g, 10, 80, 80, 80, xCentro, yCentro);
+		//Primitiva.drawLine(g, 80, 80, 80, 10, xCentro, yCentro);
+		//Primitiva.drawLine(g, 80, 10, 10, 10, xCentro, yCentro);
 		
 		//Primitiva.drawLine(g, -80, 10, -10, 80, xCentro, yCentro);
 		//Primitiva.drawLine(g, -10, 80, 20, 10, xCentro, yCentro);
 		//Primitiva.drawLine(g, 20, 10, -80, 10, xCentro, yCentro);
 		
-		
-		g.setColor(Color.BLUE);
-		//Primitiva.drawLineBresenhan(g, 7, 7, -120, 89, pontoCentral, JDesenho.this);
-		
-		g.setColor(Color.GREEN);
-		//Primitiva.drawLineBresenhan(g, -5, -5, -80, -120, pontoCentral, JDesenho.this);
-		
-		g.setColor(Color.ORANGE);
-		//Primitiva.drawLineBresenhan(g, 8, -6, 120, -80, pontoCentral, JDesenho.this);
+
 	}
 	
 	private int[] retornaPontoCentralDoPainel() {

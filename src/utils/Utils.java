@@ -6,6 +6,9 @@ import javax.swing.JPanel;
 
 public class Utils {
 
+	private static int dxCentro = 0;
+	private static int dyCentro = 0;
+	
 	public static int[] deslocaEixoDasCoordenadasDeAcordoComPontoCentral(int x1, int y1, int x2, int y2, int[] pontoCentral) {
 		
 		int x1Novo = x1;
@@ -66,6 +69,40 @@ public class Utils {
 		int[] novoX = {coord1, coord2}; 
 		
 		return novoX;
+	}
+	
+	public static int[] deslocaCoordenadasParaOCentro(int x1, int y1, int x2, int y2) {
+		
+		int[] novosPontos = new int[4];
+		
+		int dxCentro = 0 - x1;
+		int dyCentro = 0 - y1;
+		
+		int novoX2 = x2 + dxCentro;
+		int novoY2 = y2 + dyCentro;
+		
+		novosPontos[0] = 0;
+		novosPontos[1] = 0; 
+		novosPontos[2] = novoX2; 
+		novosPontos[3] = novoY2;
+		
+		Utils.dxCentro = dxCentro;
+		Utils.dxCentro = dyCentro;
+		
+		return novosPontos;
+	}
+	
+	public static Integer[] desfazDeslocamentoParaOCentro(int x1, int y1) {
+		
+		Integer[] novosPontos = new Integer[2];
+		
+		int novoX1 = x1 - dxCentro;
+		int novoY1 = y1 - dyCentro;
+		
+		novosPontos[0] = novoX1;
+		novosPontos[1] = novoY1; 
+		
+		return novosPontos;
 	}
 	
 	public static int getOctanteDaReta(int x1, int y1, int x2, int y2) {
@@ -221,6 +258,18 @@ public class Utils {
 		return novosPontos;
 	}
 	
+	private static int[] invertePontos(int x1, int y1, int x2, int y2) {
+		
+		int[] novosPontos = new int[4];
+		
+		novosPontos[0] = x2;
+		novosPontos[1] = y2;
+		novosPontos[2] = x1;
+		novosPontos[3] = y1;
+		
+		return novosPontos;
+	}
+	
 	private static int[] executaRebatimentoDo2Para1(int x1, int y1, int x2, int y2) {
 		
 		return inverteXY(x1, y1, x2, y2);
@@ -293,8 +342,13 @@ public class Utils {
 	
 	private static int[] executaRebatimentoDo3Para1(int x1, int y1, int x2, int y2) {
 		
-		int[] novosPontos = inverteSinalDeX2(x1, y1, x2, y2);
+		int[] novosPontos = {x1, y1, x2, y2}; //inverteSinalDeX2(x1, y1, x2, y2);
 		
+		novosPontos[0] = x2;
+		novosPontos[1] = y1;
+		novosPontos[2] = x1;
+		novosPontos[3] = y2;
+
 		novosPontos = inverteXY(novosPontos[0], novosPontos[1], novosPontos[2], novosPontos[3]);
 		
 		return novosPontos;
@@ -302,22 +356,27 @@ public class Utils {
 	
 	private static ArrayList<Integer[]> desfazRebatimentoDo1Para3(ArrayList<Integer[]> conjPontosDaRetaRebatida) {
 	
-		ArrayList<Integer[]> conjPontosDaReta = new ArrayList<Integer[]>(0);
+		ArrayList<Integer[]> conjPontosDaReta = desfazRebatimentoDo1Para2(conjPontosDaRetaRebatida);
 		
 		Integer[] ponto = new Integer[2];
 		
-		int x, y;
+		int sizeArrayList = conjPontosDaReta.size();
 		
-		for (int i = 0; i < conjPontosDaRetaRebatida.size(); i++) {
+		Integer[] arX = new Integer[sizeArrayList];
+		
+		for (int i = 0; i < sizeArrayList; i++) {
+
+			arX[i] = conjPontosDaReta.get(i)[0];
+		}
+		
+		for (int i = 0; i < sizeArrayList; i++) {
+
+			ponto = new Integer[2];
 			
-			x = conjPontosDaRetaRebatida.get(i)[0];
-			y = conjPontosDaRetaRebatida.get(i)[1];
-			
-			ponto = inverteXY(x, y);
-			
-			ponto = inverteSinalDeX(ponto[0], ponto[1]);
-			
-			conjPontosDaReta.add(ponto);
+			ponto[0] = arX[arX.length - 1 - i];
+			ponto[1] = conjPontosDaReta.get(i)[1];
+
+			conjPontosDaReta.set(i, ponto);
 		}
 		
 		return conjPontosDaReta;
@@ -421,9 +480,14 @@ public class Utils {
 	
 	private static int[] executaRebatimentoDo7Para1(int x1, int y1, int x2, int y2) {
 		
-		int[] novosPontos = inverteSinalDeY2(x1, y1, x2, y2);
+		int[] novosPontos = {x1, y1, x2, y2};
 		
-		novosPontos = inverteXY(novosPontos[0], novosPontos[1], novosPontos[2], novosPontos[3]);
+		//novosPontos = inverteSinalDeY2(novosPontos[0], novosPontos[1], novosPontos[2], novosPontos[3]);
+		
+		//novosPontos = inverteXY(novosPontos[0], novosPontos[1], novosPontos[2], novosPontos[3]);
+		novosPontos = invertePontos(novosPontos[0], novosPontos[1], novosPontos[2], novosPontos[3]);
+		
+		novosPontos = executaRebatimentoDo3Para1(novosPontos[0], novosPontos[1], novosPontos[2], novosPontos[3]);
 		
 		return novosPontos;
 	}
@@ -432,21 +496,19 @@ public class Utils {
 		
 		ArrayList<Integer[]> conjPontosDaReta = new ArrayList<Integer[]>(0);
 		
-		Integer[] ponto = new Integer[2];
+		conjPontosDaReta = desfazRebatimentoDo1Para3(conjPontosDaRetaRebatida);
 		
-		int x, y;
-		
-		for (int i = 0; i < conjPontosDaRetaRebatida.size(); i++) {
+		/*for (int i = 0; i < conjPontosDaRetaRebatida.size(); i++) {
 			
 			x = conjPontosDaRetaRebatida.get(i)[0];
 			y = conjPontosDaRetaRebatida.get(i)[1];
 			
 			ponto = inverteXY(x, y);
 			
-			ponto = inverteSinalDeY(ponto[0], ponto[1]);
+			//ponto = inverteSinalDeY(ponto[0], ponto[1]);
 			
 			conjPontosDaReta.add(ponto);
-		}
+		}*/
 		
 		return conjPontosDaReta;
 	}
