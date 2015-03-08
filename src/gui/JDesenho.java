@@ -61,14 +61,54 @@ public class JDesenho extends JPanel {
 		/**
 		 * ########## TESTES PARA 4o OCTANTE ##########
 		 * **/
-		Primitiva.drawLine(g, 80, 10, 10, 40, xCentro, yCentro);
-		//Primitiva.drawLine(g, 10, 10, -20, 80, xCentro, yCentro);
-		//Primitiva.drawLine(g, -20, 10, -50, 80, xCentro, yCentro);
-		//Primitiva.drawLine(g, -30, -10, -60, 60, xCentro, yCentro);
-		//Primitiva.drawLine(g, -30, -80, -60, -10, xCentro, yCentro);
-		//Primitiva.drawLine(g, 10, -80, -20, -10, xCentro, yCentro);
-		//Primitiva.drawLine(g, 40, -80, 10, -10, xCentro, yCentro);
-		//Primitiva.drawLine(g, 40, -30, 10, 40, xCentro, yCentro);
+		/*Primitiva.drawLine(g, 80, 10, 10, 40, xCentro, yCentro);
+		Primitiva.drawLine(g, 50, 10, -20, 40, xCentro, yCentro);
+		Primitiva.drawLine(g, -10, 10, -80, 40, xCentro, yCentro);
+		Primitiva.drawLine(g, -10, -10, -80, 20, xCentro, yCentro);
+		Primitiva.drawLine(g, -10, -40, -80, -10, xCentro, yCentro);
+		Primitiva.drawLine(g, 10, -40, -60, -10, xCentro, yCentro);
+		Primitiva.drawLine(g, 80, -40, 10, -10, xCentro, yCentro);
+		Primitiva.drawLine(g, 80, -10, 10, 20, xCentro, yCentro);*/
+		
+		/**
+		 * ########## TESTES PARA 5o OCTANTE ##########
+		 * **/
+		/*Primitiva.drawLine(g, 80, 40, 10, 10, xCentro, yCentro);
+		Primitiva.drawLine(g, 10, 50, -60, 20, xCentro, yCentro);
+		Primitiva.drawLine(g, -60, 40, -130, 10, xCentro, yCentro);
+		Primitiva.drawLine(g, -60, 10, -130, -20, xCentro, yCentro);
+		Primitiva.drawLine(g, -60, -10, -130, -40, xCentro, yCentro);
+		Primitiva.drawLine(g, 20, -10, -50, -40, xCentro, yCentro);
+		Primitiva.drawLine(g, 80, -10, 10, -40, xCentro, yCentro);
+		Primitiva.drawLine(g, 180, 10, 110, -20, xCentro, yCentro);*/
+		
+		/**
+		 * ########## TESTES PARA 6o OCTANTE ##########
+		 * **/
+		//Primitiva.drawLine(g, -10, -10, -30, -90, xCentro, yCentro);
+		
+		/**
+		 * ########## TESTES PARA 7o OCTANTE ##########
+		 * **/
+		/*Primitiva.drawLine(g, 10, -10, 30, -90, xCentro, yCentro);
+		Primitiva.drawLine(g, -10, -10, 10, -90, xCentro, yCentro);
+		Primitiva.drawLine(g, -30, -10, -10, -90, xCentro, yCentro);
+		Primitiva.drawLine(g, -10, 40, 10, -40, xCentro, yCentro);
+		Primitiva.drawLine(g, 10, 90, 30, 10, xCentro, yCentro);
+		Primitiva.drawLine(g, -10, 90, 10, 10, xCentro, yCentro);
+		Primitiva.drawLine(g, -30, 90, -10, 10, xCentro, yCentro);*/
+		
+		/**
+		 * ########## TESTES PARA 8o OCTANTE ##########
+		 * **/
+		/*Primitiva.drawLine(g, 20, 40, 90, 10, xCentro, yCentro);
+		Primitiva.drawLine(g, -20, 40, 70, 10, xCentro, yCentro);
+		Primitiva.drawLine(g, -90, 40, -20, 10, xCentro, yCentro);
+		Primitiva.drawLine(g, -90, 20, -20, -10, xCentro, yCentro);
+		Primitiva.drawLine(g, -90, -20, -20, -40, xCentro, yCentro);
+		Primitiva.drawLine(g, -70, -20, 20, -40, xCentro, yCentro);
+		Primitiva.drawLine(g, 20, -20, 90, -40, xCentro, yCentro);
+		Primitiva.drawLine(g, 20, 20, 90, -10, xCentro, yCentro);*/
 		
 		//Primitiva.drawLine(g, 10, 10, 10, 80, xCentro, yCentro);
 		//Primitiva.drawLine(g, 10, 80, 80, 80, xCentro, yCentro);
@@ -78,39 +118,6 @@ public class JDesenho extends JPanel {
 		//Primitiva.drawLine(g, -80, 10, -10, 80, xCentro, yCentro);
 		//Primitiva.drawLine(g, -10, 80, 20, 10, xCentro, yCentro);
 		//Primitiva.drawLine(g, 20, 10, -80, 10, xCentro, yCentro);
-		
-		//
-		
-		/**
-		 * ########## TESTES PARA 6o OCTANTE ##########
-		 * **/
-		Primitiva.drawLine(g, -10, -10, -30, -90, xCentro, yCentro);
-		Primitiva.drawLine(g, 10, -10, -10, -90, xCentro, yCentro);
-		Primitiva.drawLine(g, 30, -10, 10, -90, xCentro, yCentro);
-		
-		Primitiva.drawLine(g, -10, -40, 10, 40, xCentro, yCentro);
-		
-		Primitiva.drawLine(g, -30, 10, -10, 90, xCentro, yCentro);
-		Primitiva.drawLine(g, -10, 10, 10, 90, xCentro, yCentro);
-		Primitiva.drawLine(g, 10, 10, 30, 90, xCentro, yCentro);
-		
-		/**
-		 * ########## TESTES PARA 7o OCTANTE ##########
-		 * **/
-//		Primitiva.drawLine(g, 10, -10, 30, -90, xCentro, yCentro);
-//		Primitiva.drawLine(g, -10, -10, 10, -90, xCentro, yCentro);
-//		Primitiva.drawLine(g, -30, -10, -10, -90, xCentro, yCentro);
-//		
-//		Primitiva.drawLine(g, -10, 40, 10, -40, xCentro, yCentro);
-//		
-//		Primitiva.drawLine(g, 10, 90, 30, 10, xCentro, yCentro);
-//		Primitiva.drawLine(g, -10, 90, 10, 10, xCentro, yCentro);
-//		Primitiva.drawLine(g, -30, 90, -10, 10, xCentro, yCentro);
-		
-		/**
-		 * ########## TESTES PARA 8o OCTANTE ##########
-		 * **/
-//		Primitiva.drawLine(g, 20, -10, 90, -70, xCentro, yCentro);
 	}
 	
 	private int[] retornaPontoCentralDoPainel() {
