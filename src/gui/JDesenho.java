@@ -29,11 +29,6 @@ public class JDesenho extends JPanel {
 		
 		g.setColor(Color.RED);
 		
-		Primitiva.drawLine(g, 10, 10, 10, 10, xCentro, yCentro);
-		Primitiva.drawLine(g, 40, 10, 40, 10, xCentro, yCentro);
-		Primitiva.drawLine(g, 10, 80, 10, 80, xCentro, yCentro);
-		
-		
 		/**
 		 * ########## TESTES PARA 2o OCTANTE ##########
 		 * **/
@@ -85,7 +80,13 @@ public class JDesenho extends JPanel {
 		/**
 		 * ########## TESTES PARA 6o OCTANTE ##########
 		 * **/
-		//Primitiva.drawLine(g, -10, -10, -30, -90, xCentro, yCentro);
+		/*Primitiva.drawLine(g, -10, -10, -30, -90, xCentro, yCentro);
+		Primitiva.drawLine(g, 10, -10, -10, -90, xCentro, yCentro);
+		Primitiva.drawLine(g, 30, -10, 10, -90, xCentro, yCentro);
+		Primitiva.drawLine(g, -10, -40, 10, 40, xCentro, yCentro);
+		Primitiva.drawLine(g, -30, 10, -10, 90, xCentro, yCentro);
+		Primitiva.drawLine(g, -10, 10, 10, 90, xCentro, yCentro);
+		Primitiva.drawLine(g, 10, 10, 30, 90, xCentro, yCentro);*/
 		
 		/**
 		 * ########## TESTES PARA 7o OCTANTE ##########
@@ -118,6 +119,15 @@ public class JDesenho extends JPanel {
 		//Primitiva.drawLine(g, -80, 10, -10, 80, xCentro, yCentro);
 		//Primitiva.drawLine(g, -10, 80, 20, 10, xCentro, yCentro);
 		//Primitiva.drawLine(g, 20, 10, -80, 10, xCentro, yCentro);
+		
+		Primitiva.drawLine(g, 10, 10, 30, 30, xCentro, yCentro);
+		Primitiva.drawLine(g, 30, 30, 70, 30, xCentro, yCentro);
+		Primitiva.drawLine(g, 70, 30, 90, 10, xCentro, yCentro);
+		Primitiva.drawLine(g, 90, 10, 90, -20, xCentro, yCentro);
+		Primitiva.drawLine(g, 90, -20, 70, -70, xCentro, yCentro);
+		Primitiva.drawLine(g, 70, -70, 30, -70, xCentro, yCentro);
+		Primitiva.drawLine(g, 30, -70, 10, -20, xCentro, yCentro);
+		Primitiva.drawLine(g, 10, -20, 10, 10, xCentro, yCentro);
 	}
 	
 	private int[] retornaPontoCentralDoPainel() {

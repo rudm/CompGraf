@@ -2,122 +2,14 @@ package utils;
 
 import java.util.ArrayList;
 
-import javax.swing.JPanel;
-
 public class Utils {
 
-	private static int dxCentro = 0;
-	private static int dyCentro = 0;
-	
-	public static int[] deslocaEixoDasCoordenadasDeAcordoComPontoCentral(int x1, int y1, int x2, int y2, int[] pontoCentral) {
-		
-		int x1Novo = x1;
-		int x2Novo = x2;
-		int y1Novo = y1;
-		int y2Novo = y2;
-		
-		int xCentro = pontoCentral[0];
-		int yCentro = pontoCentral[1];
-		
-		x1Novo += xCentro; 
-		x2Novo += xCentro;
-		
-		y1Novo += yCentro;
-		y2Novo += yCentro;
-		
-		int[] novaCoordenadas = {x1Novo, y1Novo, x2Novo, y2Novo};
-		
-		return novaCoordenadas;
-	}
-	
-	public static int inverteCoordenadaY(int coord, int yCentro, JPanel painel) {
-
-		int difParaCentro = Math.abs(coord - yCentro);
-		
-		if (coord == yCentro) {
-			return coord;
-		}
-		
-		int coordNovo = painel.getHeight() - coord;
-		
-		int difParaCentroNovo = Math.abs(coordNovo - yCentro);
-		
-		if (difParaCentroNovo == difParaCentro) {
-			return coordNovo;
-		}
-		
-		if (difParaCentroNovo > difParaCentro) {
-			coordNovo += Math.abs(difParaCentro - difParaCentroNovo);
-		} else {
-			coordNovo -= Math.abs(difParaCentro - difParaCentroNovo);
-		}
-		
-		return coordNovo;
-	}
-	
-	public static int[] ordenaCoordenadas(int coord1, int coord2, boolean inverso) {
-		
-		int aux;
-		
-		if ( coord1 > coord2 ) {
-			
-			aux = coord1;
-			coord1 = coord2;
-			coord2 = aux;
-		}
-		
-		int[] novoX = {coord1, coord2}; 
-		
-		return novoX;
-	}
-	
-	public static int[] deslocaCoordenadasParaOCentro(int x1, int y1, int x2, int y2) {
-		
-		int[] novosPontos = new int[4];
-		
-		int dxCentro = 0 - x1;
-		int dyCentro = 0 - y1;
-		
-		int novoX2 = x2 + dxCentro;
-		int novoY2 = y2 + dyCentro;
-		
-		novosPontos[0] = 0;
-		novosPontos[1] = 0; 
-		novosPontos[2] = novoX2; 
-		novosPontos[3] = novoY2;
-		
-		Utils.dxCentro = dxCentro;
-		Utils.dxCentro = dyCentro;
-		
-		return novosPontos;
-	}
-	
-	public static Integer[] desfazDeslocamentoParaOCentro(int x1, int y1) {
-		
-		Integer[] novosPontos = new Integer[2];
-		
-		int novoX1 = x1 - dxCentro;
-		int novoY1 = y1 - dyCentro;
-		
-		novosPontos[0] = novoX1;
-		novosPontos[1] = novoY1; 
-		
-		return novosPontos;
-	}
-	
 	public static int getOctanteDaReta(int x1, int y1, int x2, int y2) {
 		
 		int octante = 1;
 
 		int dx = Math.abs(x2 - x1);
 		int dy = Math.abs(y2 - y1);
-		
-		/*
-		 * Q1: x1 < x2 && y1 < y2
-		 * Q2: x1 > x2 && y1 < y2
-		 * Q3: x1 > x2 && y1 > y2
-		 * Q4: x1 < x2 && y1 > y2
-		 * */
 		
 		if (x1 < x2 && y1 < y2) {
 			
@@ -298,7 +190,7 @@ public class Utils {
 	
 	private static int[] executaRebatimentoDo3Para1(int x1, int y1, int x2, int y2) {
 		
-		int[] novosPontos = {x1, y1, x2, y2}; //inverteSinalDeX2(x1, y1, x2, y2);
+		int[] novosPontos = {x1, y1, x2, y2}; 
 		
 		novosPontos[0] = x2;
 		novosPontos[1] = y1;
