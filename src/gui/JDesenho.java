@@ -85,6 +85,14 @@ public class JDesenho extends JPanel {
 		 * ########## TESTES PARA 6o OCTANTE ##########
 		 * **/
 		Primitiva.drawLine(g, -10, -10, -30, -90, xCentro, yCentro);
+		Primitiva.drawLine(g, 10, -10, -10, -90, xCentro, yCentro);
+		Primitiva.drawLine(g, 30, -10, 10, -90, xCentro, yCentro);
+		
+		Primitiva.drawLine(g, -10, -40, 10, 40, xCentro, yCentro);
+		
+		Primitiva.drawLine(g, -30, 10, -10, 90, xCentro, yCentro);
+		Primitiva.drawLine(g, -10, 10, 10, 90, xCentro, yCentro);
+		Primitiva.drawLine(g, 10, 10, 30, 90, xCentro, yCentro);
 		
 		/**
 		 * ########## TESTES PARA 7o OCTANTE ##########
