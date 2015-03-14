@@ -124,9 +124,9 @@ public class JDesenho extends JPanel {
 		Primitiva.drawLine(g, 30, 30, 70, 30, xCentro, yCentro);
 		Primitiva.drawLine(g, 70, 30, 90, 10, xCentro, yCentro);
 		Primitiva.drawLine(g, 90, 10, 90, -20, xCentro, yCentro);
-		Primitiva.drawLine(g, 90, -20, 70, -70, xCentro, yCentro);
-		Primitiva.drawLine(g, 70, -70, 30, -70, xCentro, yCentro);
-		Primitiva.drawLine(g, 30, -70, 10, -20, xCentro, yCentro);
+		Primitiva.drawLine(g, 90, -20, 65, -70, xCentro, yCentro);
+		Primitiva.drawLine(g, 65, -70, 35, -70, xCentro, yCentro);
+		Primitiva.drawLine(g, 35, -70, 10, -20, xCentro, yCentro);
 		Primitiva.drawLine(g, 10, -20, 10, 10, xCentro, yCentro);
 	}
 	

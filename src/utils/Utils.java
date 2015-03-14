@@ -197,7 +197,7 @@ public class Utils {
 		novosPontos[2] = x1;
 		novosPontos[3] = y2;
 
-		novosPontos = inverteXY(novosPontos[0], novosPontos[1], novosPontos[2], novosPontos[3]);
+		novosPontos = executaRebatimentoDo2Para1(novosPontos[0], novosPontos[1], novosPontos[2], novosPontos[3]); //inverteXY(novosPontos[0], novosPontos[1], novosPontos[2], novosPontos[3]);
 		
 		return novosPontos;
 	}

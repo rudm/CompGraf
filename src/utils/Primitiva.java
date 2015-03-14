@@ -59,13 +59,5 @@ public class Primitiva {
 			
 			PrimitivaBresenhan.drawLineBresenhan(g, x1Novo, y1Novo, x2Novo, y2Novo, xCentro, yCentro);
 		}
-		
-		/*double m = (double)( y2 - y1 ) / (double)( x2 - x1 );
-		
-		double b = y1 - (double)( m * x1 );
-		
-		for (int i = x1; i <= x2; i++) {
-			Primitiva.drawPixel(g, i, (int)(m * i + b));
-		}*/
 	}
 }
