@@ -71,4 +71,35 @@ public class OperacaoMatriz {
 		
 		return matrizResultante;
 	}
+	
+	public static int[][] multiplicaMatrizes(int[][] matriz1, int[][] matriz2) {
+		
+		if (matriz1[0].length != matriz2.length) {
+			System.out.println("!!!!!!!!!!! ERRO !!!!!!!!!!!!");
+			System.out.println("Número de colunas da Matriz 1 é diferente do número de linhas da Matriz 2");
+			int[][] matrizResultante = new int[matriz1.length][matriz2[0].length];
+			return matrizResultante;
+		}
+		
+		int[][] matrizResultante = new int[matriz1.length][matriz2[0].length];
+		
+		int elemento = 0; 
+		
+		for (int i = 0; i < matriz1.length; i++) {
+			
+			for (int colunaDaSegundaMatriz = 0; colunaDaSegundaMatriz < matriz2[0].length; colunaDaSegundaMatriz++) {
+			
+				for (int j = 0; j < matriz1[i].length; j++) {
+					
+					elemento += matriz1[i][j] * matriz2[j][colunaDaSegundaMatriz];
+				}
+				
+				matrizResultante[i][colunaDaSegundaMatriz] = elemento;
+				
+				elemento = 0;
+			}
+		}
+		
+		return matrizResultante;
+	}
 }

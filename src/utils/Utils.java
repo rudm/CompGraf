@@ -4,6 +4,60 @@ import java.util.ArrayList;
 
 public class Utils {
 
+	public static int[][] getMatrizTemplateTransalacao(int x1, int y1, int x2, int y2) {
+		
+		int[][] matrizTemplateTranslacao = { {1, 0, (x2 - x1)}, {0, 1, (y2 - y1)}, {0, 0, 1} };
+		
+		return matrizTemplateTranslacao;
+	}
+	
+	public static int[][] getMatrizTemplateRotacaoCompleta(int x1, int y1, int x2, int y2, double angulo) {
+		
+		int[][] matrizTemplateRotacaoCompleta = new int [3][3];
+		
+		matrizTemplateRotacaoCompleta[0][0] = Math.round((float)Math.cos(angulo));
+		matrizTemplateRotacaoCompleta[0][1] = Math.round((float)Math.sin(angulo)*-1); 
+		matrizTemplateRotacaoCompleta[0][2] = (x2 - x1)*(1 - Math.round((float)Math.cos(angulo))) + (y2 - y1)*Math.round((float)Math.sin(angulo));
+		matrizTemplateRotacaoCompleta[1][0] = Math.round((float)Math.sin(angulo));
+		matrizTemplateRotacaoCompleta[1][1] = Math.round((float)Math.cos(angulo)*-1);
+		matrizTemplateRotacaoCompleta[1][2] = (y2 - y1)*(1 - Math.round((float)Math.cos(angulo))) + (x2 - x1)*Math.round((float)Math.sin(angulo));
+		matrizTemplateRotacaoCompleta[2][0] = 0;
+		matrizTemplateRotacaoCompleta[2][1] = 0;
+		matrizTemplateRotacaoCompleta[2][2] = 1;
+		
+		return matrizTemplateRotacaoCompleta;
+	}
+	
+	public static int[][] getMatrizTemplateEscalaCompleta(int x1, int y1, int x2, int y2, double fatorX, double fatorY) {
+		
+		int[][] matrizTemplateRotacaoCompleta = new int [3][3];
+		
+		matrizTemplateRotacaoCompleta[0][0] = Math.round((float)fatorX);
+		matrizTemplateRotacaoCompleta[0][1] = 0;
+		matrizTemplateRotacaoCompleta[0][2] = (x2 - x1)*(1 - Math.round((float)fatorX));
+		matrizTemplateRotacaoCompleta[1][0] = 0;
+		matrizTemplateRotacaoCompleta[1][1] = Math.round((float)fatorY);
+		matrizTemplateRotacaoCompleta[1][2] = (y2 - y1)*(1 - Math.round((float)fatorY));
+		matrizTemplateRotacaoCompleta[2][0] = 0;
+		matrizTemplateRotacaoCompleta[2][1] = 0;
+		matrizTemplateRotacaoCompleta[2][2] = 1;
+		
+		return matrizTemplateRotacaoCompleta;
+	}
+	
+	public static int[] transladaPonto(int x1, int y1, int x2, int y2) {
+
+		int[][] matrizTranslacao = getMatrizTemplateTransalacao(x1, y1, x2, y2);
+		
+		int[][] matrizNovoPonto = new int [1][3];
+		
+		int[][] matrizResultado = OperacaoMatriz.multiplicaMatrizes(matrizTranslacao, matrizNovoPonto);
+		
+		int[] novoPonto = {matrizResultado[0][0], matrizResultado[0][1]};
+		
+		return novoPonto;
+	}
+	
 	public static int getOctanteDaReta(int x1, int y1, int x2, int y2) {
 		
 		int octante = 1;
