@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -120,14 +121,50 @@ public class JDesenho extends JPanel {
 		//Primitiva.drawLine(g, -10, 80, 20, 10, xCentro, yCentro);
 		//Primitiva.drawLine(g, 20, 10, -80, 10, xCentro, yCentro);
 		
-		Primitiva.drawLine(g, 10, 10, 30, 30, xCentro, yCentro);
-		Primitiva.drawLine(g, 30, 30, 70, 30, xCentro, yCentro);
-		Primitiva.drawLine(g, 70, 30, 90, 10, xCentro, yCentro);
-		Primitiva.drawLine(g, 90, 10, 90, -20, xCentro, yCentro);
-		Primitiva.drawLine(g, 90, -20, 65, -70, xCentro, yCentro);
-		Primitiva.drawLine(g, 65, -70, 35, -70, xCentro, yCentro);
-		Primitiva.drawLine(g, 35, -70, 10, -20, xCentro, yCentro);
-		Primitiva.drawLine(g, 10, -20, 10, 10, xCentro, yCentro);
+//		Primitiva.drawLine(g, 10, 10, 30, 30, xCentro, yCentro);
+//		Primitiva.drawLine(g, 30, 30, 70, 30, xCentro, yCentro);
+//		Primitiva.drawLine(g, 70, 30, 90, 10, xCentro, yCentro);
+//		Primitiva.drawLine(g, 90, 10, 90, -20, xCentro, yCentro);
+//		Primitiva.drawLine(g, 90, -20, 65, -70, xCentro, yCentro);
+//		Primitiva.drawLine(g, 65, -70, 35, -70, xCentro, yCentro);
+//		Primitiva.drawLine(g, 35, -70, 10, -20, xCentro, yCentro);
+//		Primitiva.drawLine(g, 10, -20, 10, 10, xCentro, yCentro);
+		
+		// Triangulo
+		ArrayList<Integer> p1 = new ArrayList<Integer>();
+		p1.add(new Integer(30));
+		p1.add(new Integer(30));
+		p1.add(new Integer(60));
+		p1.add(new Integer(90));
+		p1.add(new Integer(90));
+		p1.add(new Integer(30));
+		Primitiva.drawPolygon(g, p1, xCentro, yCentro);
+		
+		// Quadrado
+		ArrayList<Integer> p2 = new ArrayList<Integer>();
+		p2.add(new Integer(-30));
+		p2.add(new Integer(30));
+		p2.add(new Integer(-30));
+		p2.add(new Integer(90));
+		p2.add(new Integer(-90));
+		p2.add(new Integer(90));
+		p2.add(new Integer(-90));
+		p2.add(new Integer(30));
+		Primitiva.drawPolygon(g, p2, xCentro, yCentro);
+		
+		// Pentagono
+		ArrayList<Integer> p3 = new ArrayList<Integer>();
+		p3.add(new Integer(-50));
+		p3.add(new Integer(-10));
+		p3.add(new Integer(-10));
+		p3.add(new Integer(-50));
+		p3.add(new Integer(-25));
+		p3.add(new Integer(-90));
+		p3.add(new Integer(-70));
+		p3.add(new Integer(-90));
+		p3.add(new Integer(-90));
+		p3.add(new Integer(-50));
+		Primitiva.drawPolygon(g, p3, xCentro, yCentro);
 	}
 	
 	private int[] retornaPontoCentralDoPainel() {

@@ -1,6 +1,7 @@
 package utils;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -58,6 +59,21 @@ public class Primitiva {
 			}
 			
 			PrimitivaBresenhan.drawLineBresenhan(g, x1Novo, y1Novo, x2Novo, y2Novo, xCentro, yCentro);
+		}
+	}
+	
+	public static void drawPolygon(Graphics g, ArrayList<Integer> pontos, int xCentro, int yCentro) {
+		
+		if (pontos.size() % 2 != 0 || pontos.size() <= 2) {
+			System.out.println("conjunto de pontos inválidos");
+			return;
+		}
+		
+		pontos.add(new Integer(pontos.get(0)));
+		pontos.add(new Integer(pontos.get(1)));
+		
+		for (int i = 0 ; i < pontos.size() - 2 ; i += 2) {
+			drawLine(g, pontos.get(i), pontos.get(i + 1), pontos.get(i + 2), pontos.get(i + 3), xCentro, yCentro);
 		}
 	}
 }
