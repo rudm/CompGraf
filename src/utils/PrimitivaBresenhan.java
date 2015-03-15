@@ -29,8 +29,8 @@ public class PrimitivaBresenhan {
 			xNovo = Utils.converteCoordenadaX(x, xCentro);
 			yNovo = Utils.converteCoordenadaY(y, yCentro);
 			
-			System.out.println("x = " + xNovo);
-			System.out.println("y = " + yNovo);
+			//System.out.println("x = " + xNovo);
+			//System.out.println("y = " + yNovo);
 			
 			Primitiva.drawPixel(g, xNovo, yNovo);
 		}
@@ -63,11 +63,11 @@ public class PrimitivaBresenhan {
 		int x = novoPontoX1;
 		int y = novoPontoY1;
 		
-		System.out.println("dx = " + dx);
-		System.out.println("dy = " + dy);
-		System.out.println("d = " + d);
-		System.out.println("incE = " + incE);
-		System.out.println("incNE = " + incNE);
+//		System.out.println("dx = " + dx);
+//		System.out.println("dy = " + dy);
+//		System.out.println("d = " + d);
+//		System.out.println("incE = " + incE);
+//		System.out.println("incNE = " + incNE);
 		//System.out.println("x = " + x);
 		//System.out.println("y = " + y);
 		
@@ -92,8 +92,8 @@ public class PrimitivaBresenhan {
 				y++;
 			}
 			
-			System.out.println("x = " + x);
-			System.out.println("y = " + y);
+//			System.out.println("x = " + x);
+//			System.out.println("y = " + y);
 			
 			//Primitiva.drawPixel(g, x, y);
 			

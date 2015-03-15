@@ -27,6 +27,56 @@ public class OperacaoMatriz {
 		System.out.println();
 	}
 	
+	public static void escreveMatrizNoConsole( double [][] matriz, String nomeMatriz ) {
+		
+		System.out.println("Matriz \"" + nomeMatriz + "\":");
+		System.out.println();
+		
+		for (int i = 0; i < matriz.length; i++) {
+			
+			System.out.print("| ");
+			
+			for (int j = 0; j < matriz[i].length; j++) {
+
+				if ( j == ( matriz[i].length - 1 ) ) {
+					System.out.print( matriz[i][j] );
+				} else {
+					System.out.print( matriz[i][j] + " " );
+				}
+			}
+			
+			System.out.print( " |" );
+			System.out.println();
+		}
+		
+		System.out.println();
+	}
+	
+	public static void escreveMatrizNoConsole( int [][] matriz, String nomeMatriz ) {
+		
+		System.out.println("Matriz \"" + nomeMatriz + "\":");
+		System.out.println();
+		
+		for (int i = 0; i < matriz.length; i++) {
+			
+			System.out.print("| ");
+			
+			for (int j = 0; j < matriz[i].length; j++) {
+
+				if ( j == ( matriz[i].length - 1 ) ) {
+					System.out.print( matriz[i][j] );
+				} else {
+					System.out.print( matriz[i][j] + "\t" );
+				}
+			}
+			
+			System.out.print( "\t|" );
+			System.out.println();
+		}
+		
+		System.out.println();
+	}
+	
 	public static void testaMultiplicacao(Integer[][] matriz1, Integer[][] matriz2) {
 		
 		System.out.println("- Ordem da Matriz 1: " + matriz1.length + " x " + matriz1[0].length);
@@ -83,7 +133,10 @@ public class OperacaoMatriz {
 		
 		int[][] matrizResultante = new int[matriz1.length][matriz2[0].length];
 		
-		int elemento = 0; 
+		int elementoMatrizResultante = 0; 
+		
+		int elementoMatriz1 = 0;
+		int elementoMatriz2 = 0;
 		
 		for (int i = 0; i < matriz1.length; i++) {
 			
@@ -91,12 +144,52 @@ public class OperacaoMatriz {
 			
 				for (int j = 0; j < matriz1[i].length; j++) {
 					
-					elemento += matriz1[i][j] * matriz2[j][colunaDaSegundaMatriz];
+					elementoMatriz1 = matriz1[i][j];
+					elementoMatriz2 = matriz2[j][colunaDaSegundaMatriz];
+					
+					elementoMatrizResultante += elementoMatriz1 * elementoMatriz2;
 				}
 				
-				matrizResultante[i][colunaDaSegundaMatriz] = elemento;
+				matrizResultante[i][colunaDaSegundaMatriz] = elementoMatrizResultante;
 				
-				elemento = 0;
+				elementoMatrizResultante = 0;
+			}
+		}
+		
+		return matrizResultante;
+	}
+	
+	public static double[][] multiplicaMatrizes(double[][] matriz1, int[][] matriz2) {
+		
+		if (matriz1[0].length != matriz2.length) {
+			System.out.println("!!!!!!!!!!! ERRO !!!!!!!!!!!!");
+			System.out.println("Número de colunas da Matriz 1 é diferente do número de linhas da Matriz 2");
+			double[][] matrizResultante = new double[matriz1.length][matriz2[0].length];
+			return matrizResultante;
+		}
+		
+		double[][] matrizResultante = new double[matriz1.length][matriz2[0].length];
+		
+		double elementoMatrizResultante = 0; 
+		
+		double elementoMatriz1 = 0;
+		double elementoMatriz2 = 0;
+		
+		for (int i = 0; i < matriz1.length; i++) {
+			
+			for (int colunaDaSegundaMatriz = 0; colunaDaSegundaMatriz < matriz2[0].length; colunaDaSegundaMatriz++) {
+			
+				for (int j = 0; j < matriz1[i].length; j++) {
+					
+					elementoMatriz1 = matriz1[i][j];
+					elementoMatriz2 = matriz2[j][colunaDaSegundaMatriz];
+					
+					elementoMatrizResultante += elementoMatriz1 * elementoMatriz2;
+				}
+				
+				matrizResultante[i][colunaDaSegundaMatriz] = elementoMatrizResultante;
+				
+				elementoMatrizResultante = 0;
 			}
 		}
 		

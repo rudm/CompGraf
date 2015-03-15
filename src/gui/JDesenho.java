@@ -6,7 +6,9 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import utils.OperacaoMatriz;
 import utils.Primitiva;
+import utils.Utils;
 
 public class JDesenho extends JPanel {
 
@@ -143,12 +145,70 @@ public class JDesenho extends JPanel {
 		p1.add(new Integer(90));
 		p1.add(new Integer(90));
 		p1.add(new Integer(30));
+		
 		Primitiva.drawPolygon(g, p1, xCentro, yCentro);
+		
+		int dX, dY, xPivot, yPivot, angulo;
+		double fatorX, fatorY;
+		
+		/*int dX = -30;
+		int dY = -30;
+		
+		g.setColor(Color.BLUE);
+		
+		ArrayList<Integer> novoP1 = transaladaPoligono(p1, dX, dY); 
+		
+		Primitiva.drawPolygon(g, novoP1, xCentro, yCentro);
+		
+		int xPivot = 0;
+		int yPivot = 0;
+		int angulo = 45;
+		
+		g.setColor(Color.GREEN);
+		
+		ArrayList<Integer> novoP1_2 = rotacionaPoligono(novoP1, xPivot, yPivot, angulo); 
+		
+		Primitiva.drawPolygon(g, novoP1_2, xCentro, yCentro);
+		
+		
+		g.setColor(Color.MAGENTA);
+		
+		ArrayList<Integer> novoP1_3 = transaladaPoligono(novoP1_2, -dX, -dY); 
+		
+		Primitiva.drawPolygon(g, novoP1_3, xCentro, yCentro);*/
+		
+		
+		/*xPivot = 30;
+		yPivot = 30;
+		angulo = 45;
+		
+		g.setColor(Color.PINK);
+		
+		ArrayList<Integer> novoP1_4 = rotacionaPoligonoCompleto(p1, xPivot, yPivot, angulo); 
+		
+		Primitiva.drawPolygon(g, novoP1_4, xCentro, yCentro);*/
+		
+		xPivot = 30;
+		yPivot = 30;
+		fatorX = 0.5;
+		fatorY = 0.5;
+		
+		g.setColor(Color.BLUE);
+		
+		ArrayList<Integer> novoP1_5 = escalaPoligonoCompleto(p1, xPivot, yPivot, fatorX, fatorY); 
+		
+		Primitiva.drawPolygon(g, novoP1_5, xCentro, yCentro);
+		
+		
+		//g.setColor(Color.BLACK);
+		
+		//Primitiva.drawVLine(g, -10, -30, 30, xCentro, yCentro);
+		//Primitiva.drawVLine(g, 30, 30, 90, xCentro, yCentro);
 		
 		/**
 		 * ########## QUADRADO ##########
 		 * **/
-		ArrayList<Integer> p2 = new ArrayList<Integer>();
+		/*ArrayList<Integer> p2 = new ArrayList<Integer>();
 		p2.add(new Integer(-30));
 		p2.add(new Integer(30));
 		p2.add(new Integer(-30));
@@ -157,12 +217,12 @@ public class JDesenho extends JPanel {
 		p2.add(new Integer(90));
 		p2.add(new Integer(-90));
 		p2.add(new Integer(30));
-		Primitiva.drawPolygon(g, p2, xCentro, yCentro);
+		Primitiva.drawPolygon(g, p2, xCentro, yCentro);*/
 		
 		/**
 		 * ########## PENTAGONO ##########
 		 * **/
-		ArrayList<Integer> p3 = new ArrayList<Integer>();
+		/*ArrayList<Integer> p3 = new ArrayList<Integer>();
 		p3.add(new Integer(-50));
 		p3.add(new Integer(-10));
 		p3.add(new Integer(-10));
@@ -174,6 +234,109 @@ public class JDesenho extends JPanel {
 		p3.add(new Integer(-90));
 		p3.add(new Integer(-50));
 		Primitiva.drawPolygon(g, p3, xCentro, yCentro);
+		
+		int dX = 60;
+		int dY = 60;
+		
+		g.setColor(Color.BLUE);
+		
+		ArrayList<Integer> novoP1 = transaladaPoligono(p3, dX, dY); 
+		
+		Primitiva.drawPolygon(g, novoP1, xCentro, yCentro);*/
+	}
+	
+	private ArrayList<Integer> transaladaPoligono(ArrayList<Integer> poligono, int dX, int dY) {
+		
+		int x1, y1;
+		int[] novoPonto;
+		ArrayList<Integer> novoPoligono = new ArrayList<Integer>(0);
+		
+		OperacaoMatriz.escreveMatrizNoConsole(Utils.getMatrizTemplateTransalacao(dX, dY), "Translação");
+		
+		for (int i = 0; i < poligono.size(); i+=2) {
+			x1 = poligono.get(i);
+			y1 = poligono.get(i+1);
+			
+			novoPonto = Utils.transladaPonto(x1, y1, (dX + x1), (dY + y1));
+			
+			novoPoligono.add(novoPonto[0]);
+			novoPoligono.add(novoPonto[1]);
+		}
+		
+		return novoPoligono;
+	}
+	
+	private ArrayList<Integer> rotacionaPoligonoCompleto(ArrayList<Integer> poligono, int xPivot, int yPivot, double angulo) {
+		
+		int x1, y1;
+		int[] novoPonto;
+		ArrayList<Integer> novoPoligono = new ArrayList<Integer>(0);
+		
+		OperacaoMatriz.escreveMatrizNoConsole(Utils.getMatrizTemplateRotacaoCompleta(xPivot, yPivot, angulo), "Rotação Completa");
+		
+		for (int i = 0; i < poligono.size(); i+=2) {
+			x1 = poligono.get(i);
+			y1 = poligono.get(i+1);
+			
+			novoPonto = Utils.rotacionaPontoCompleto(x1, y1, xPivot, yPivot, angulo);
+			
+			novoPoligono.add(novoPonto[0]);
+			novoPoligono.add(novoPonto[1]);
+		}
+		
+		return novoPoligono;
+	}
+	
+	
+	private ArrayList<Integer> rotacionaPoligonoCompleto(ArrayList<Integer> poligono, double angulo) {
+		
+		int[] pontoPivot = Utils.calculaPivot(poligono);
+		
+		ArrayList<Integer> novoPoligono = rotacionaPoligonoCompleto(poligono, pontoPivot[0], pontoPivot[1], angulo);
+		
+		return novoPoligono;
+	}
+	
+	private ArrayList<Integer> rotacionaPoligono(ArrayList<Integer> poligono, int xPivot, int yPivot, double angulo) {
+		
+		int x1, y1;
+		int[] novoPonto;
+		ArrayList<Integer> novoPoligono = new ArrayList<Integer>(0);
+		
+		OperacaoMatriz.escreveMatrizNoConsole(Utils.getMatrizTemplateRotacao(xPivot, yPivot, angulo), "Rotação Simples");
+		
+		for (int i = 0; i < poligono.size(); i+=2) {
+			x1 = poligono.get(i);
+			y1 = poligono.get(i+1);
+			
+			novoPonto = Utils.rotacionaPonto(x1, y1, xPivot, yPivot, angulo);
+			
+			novoPoligono.add(novoPonto[0]);
+			novoPoligono.add(novoPonto[1]);
+		}
+		
+		return novoPoligono;
+	}
+	
+	private ArrayList<Integer> escalaPoligonoCompleto(ArrayList<Integer> poligono, int xPivot, int yPivot, double fatorX, double fatorY) {
+		
+		int x1, y1;
+		int[] novoPonto;
+		ArrayList<Integer> novoPoligono = new ArrayList<Integer>(0);
+		
+		OperacaoMatriz.escreveMatrizNoConsole(Utils.getMatrizTemplateEscalaCompleta(xPivot, yPivot, fatorX, fatorY), "Escala Simples");
+		
+		for (int i = 0; i < poligono.size(); i+=2) {
+			x1 = poligono.get(i);
+			y1 = poligono.get(i+1);
+			
+			novoPonto = Utils.escalaPontoCompleto(x1, y1, xPivot, yPivot, fatorX, fatorY);
+			
+			novoPoligono.add(novoPonto[0]);
+			novoPoligono.add(novoPonto[1]);
+		}
+		
+		return novoPoligono;
 	}
 	
 	private int[] retornaPontoCentralDoPainel() {

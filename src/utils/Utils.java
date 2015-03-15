@@ -11,52 +11,175 @@ public class Utils {
 		return matrizTemplateTranslacao;
 	}
 	
-	public static int[][] getMatrizTemplateRotacaoCompleta(int x1, int y1, int x2, int y2, double angulo) {
+	public static int[][] getMatrizTemplateTransalacao(int dX, int dY) {
 		
-		int[][] matrizTemplateRotacaoCompleta = new int [3][3];
+		int[][] matrizTemplateTranslacao = { {1, 0, dX}, {0, 1, dY}, {0, 0, 1} };
 		
-		matrizTemplateRotacaoCompleta[0][0] = Math.round((float)Math.cos(angulo));
-		matrizTemplateRotacaoCompleta[0][1] = Math.round((float)Math.sin(angulo)*-1); 
-		matrizTemplateRotacaoCompleta[0][2] = (x2 - x1)*(1 - Math.round((float)Math.cos(angulo))) + (y2 - y1)*Math.round((float)Math.sin(angulo));
-		matrizTemplateRotacaoCompleta[1][0] = Math.round((float)Math.sin(angulo));
-		matrizTemplateRotacaoCompleta[1][1] = Math.round((float)Math.cos(angulo)*-1);
-		matrizTemplateRotacaoCompleta[1][2] = (y2 - y1)*(1 - Math.round((float)Math.cos(angulo))) + (x2 - x1)*Math.round((float)Math.sin(angulo));
-		matrizTemplateRotacaoCompleta[2][0] = 0;
-		matrizTemplateRotacaoCompleta[2][1] = 0;
-		matrizTemplateRotacaoCompleta[2][2] = 1;
-		
-		return matrizTemplateRotacaoCompleta;
-	}
-	
-	public static int[][] getMatrizTemplateEscalaCompleta(int x1, int y1, int x2, int y2, double fatorX, double fatorY) {
-		
-		int[][] matrizTemplateRotacaoCompleta = new int [3][3];
-		
-		matrizTemplateRotacaoCompleta[0][0] = Math.round((float)fatorX);
-		matrizTemplateRotacaoCompleta[0][1] = 0;
-		matrizTemplateRotacaoCompleta[0][2] = (x2 - x1)*(1 - Math.round((float)fatorX));
-		matrizTemplateRotacaoCompleta[1][0] = 0;
-		matrizTemplateRotacaoCompleta[1][1] = Math.round((float)fatorY);
-		matrizTemplateRotacaoCompleta[1][2] = (y2 - y1)*(1 - Math.round((float)fatorY));
-		matrizTemplateRotacaoCompleta[2][0] = 0;
-		matrizTemplateRotacaoCompleta[2][1] = 0;
-		matrizTemplateRotacaoCompleta[2][2] = 1;
-		
-		return matrizTemplateRotacaoCompleta;
+		return matrizTemplateTranslacao;
 	}
 	
 	public static int[] transladaPonto(int x1, int y1, int x2, int y2) {
 
 		int[][] matrizTranslacao = getMatrizTemplateTransalacao(x1, y1, x2, y2);
 		
-		int[][] matrizNovoPonto = new int [1][3];
+		int[][] matrizNovoPonto = { {x1}, {y1}, {1} };
 		
 		int[][] matrizResultado = OperacaoMatriz.multiplicaMatrizes(matrizTranslacao, matrizNovoPonto);
 		
-		int[] novoPonto = {matrizResultado[0][0], matrizResultado[0][1]};
+		int[] novoPonto = {matrizResultado[0][0], matrizResultado[1][0]};
 		
 		return novoPonto;
 	}
+	
+	public static double[][] getMatrizTemplateRotacao(int xPivot, int yPivot, double angulo) {
+		
+		double[][] matrizTemplateRotacaoCompleta = new double [3][3];
+		
+		double anguloRad = Math.toRadians(angulo);
+		
+		double cosAngulo = Math.cos(anguloRad);
+		//int cosAnguloArredondado = Math.round((float)cosAngulo);
+		
+		double sinAngulo = Math.sin(anguloRad);
+		//int sinAnguloArredondado = Math.round((float)sinAngulo);
+		
+		matrizTemplateRotacaoCompleta[0][0] = cosAngulo;//cosAnguloArredondado;
+		matrizTemplateRotacaoCompleta[0][1] = sinAngulo * -1;//sinAnguloArredondado * -1; 
+		matrizTemplateRotacaoCompleta[0][2] = 0;
+		matrizTemplateRotacaoCompleta[1][0] = sinAngulo;//sinAnguloArredondado;
+		matrizTemplateRotacaoCompleta[1][1] = cosAngulo;//cosAnguloArredondado;
+		matrizTemplateRotacaoCompleta[1][2] = 0;
+		matrizTemplateRotacaoCompleta[2][0] = 0;
+		matrizTemplateRotacaoCompleta[2][1] = 0;
+		matrizTemplateRotacaoCompleta[2][2] = 1;
+		
+		return matrizTemplateRotacaoCompleta;
+	}
+	
+	public static double[][] getMatrizTemplateRotacaoCompleta(int xPivot, int yPivot, double angulo) {
+		
+		double[][] matrizTemplateRotacaoCompleta = new double [3][3];
+		
+		double anguloRad = Math.toRadians(angulo);
+		
+		double cosAngulo = Math.cos(anguloRad);
+		//int cosAnguloArredondado = Math.round((float)cosAngulo);
+		
+		double sinAngulo = Math.sin(anguloRad);
+		//int sinAnguloArredondado = Math.round((float)sinAngulo);
+		
+		matrizTemplateRotacaoCompleta[0][0] = cosAngulo;//cosAnguloArredondado;
+		matrizTemplateRotacaoCompleta[0][1] = sinAngulo * -1;//sinAnguloArredondado * -1; 
+		matrizTemplateRotacaoCompleta[0][2] = xPivot * (1 - cosAngulo /*cosAnguloArredondado*/) + (yPivot * sinAngulo /*sinAnguloArredondado*/);
+		matrizTemplateRotacaoCompleta[1][0] = sinAngulo;//sinAnguloArredondado;
+		matrizTemplateRotacaoCompleta[1][1] = cosAngulo;//cosAnguloArredondado;
+		matrizTemplateRotacaoCompleta[1][2] = yPivot*(1 - cosAngulo /*cosAnguloArredondado*/) + (xPivot * sinAngulo /*sinAnguloArredondado*/);
+		matrizTemplateRotacaoCompleta[2][0] = 0;
+		matrizTemplateRotacaoCompleta[2][1] = 0;
+		matrizTemplateRotacaoCompleta[2][2] = 1;
+		
+		return matrizTemplateRotacaoCompleta;
+	}
+	
+	//TODO - Implementar o cálculo do pivot aleatório.
+	public static int[] calculaPivot(ArrayList<Integer> poligono) {
+		
+		int[] pontoPivot = new int[2];
+		
+		return pontoPivot;
+	}
+	
+	//TODO - Ao executar esta operação, a nova imagem está sofrendo uma transalação desnecessária em Y.
+	public static int[] rotacionaPontoCompleto(int x1, int y1, int xPivot, int yPivot, double angulo) {
+
+		double[][] matrizRotacao = getMatrizTemplateRotacaoCompleta(xPivot, yPivot, angulo);
+		
+		int[][] matrizNovoPonto = { {x1}, {y1}, {1} };
+		
+		double[][] matrizResultado = OperacaoMatriz.multiplicaMatrizes(matrizRotacao, matrizNovoPonto);
+		
+		OperacaoMatriz.escreveMatrizNoConsole(matrizResultado, "Matriz Rotação Ponto "+ x1 + ", " + y1);
+		
+		int[] novoPonto = {Math.round((float)matrizResultado[0][0]), Math.round((float)matrizResultado[1][0])};
+		
+		return novoPonto;
+	}
+	
+	public static int[] rotacionaPonto(int x1, int y1, int xPivot, int yPivot, double angulo) {
+
+		double[][] matrizRotacao = getMatrizTemplateRotacao(xPivot, yPivot, angulo);
+		
+		int[][] matrizNovoPonto = { {x1}, {y1}, {1} };
+		
+		double[][] matrizResultado = OperacaoMatriz.multiplicaMatrizes(matrizRotacao, matrizNovoPonto);
+		
+		int[] novoPonto = {Math.round((float)matrizResultado[0][0]), Math.round((float)matrizResultado[1][0])};
+		
+		return novoPonto;
+	}
+	
+	public static double[][] getMatrizTemplateEscala(double fatorX, double fatorY) {
+		
+		double[][] matrizTemplateRotacaoCompleta = new double [3][3];
+		
+		matrizTemplateRotacaoCompleta[0][0] = fatorX;
+		matrizTemplateRotacaoCompleta[0][1] = 0;
+		matrizTemplateRotacaoCompleta[0][2] = 0;
+		matrizTemplateRotacaoCompleta[1][0] = 0;
+		matrizTemplateRotacaoCompleta[1][1] = fatorY;
+		matrizTemplateRotacaoCompleta[1][2] = 0;
+		matrizTemplateRotacaoCompleta[2][0] = 0;
+		matrizTemplateRotacaoCompleta[2][1] = 0;
+		matrizTemplateRotacaoCompleta[2][2] = 1;
+		
+		return matrizTemplateRotacaoCompleta;
+	}
+	
+	public static double[][] getMatrizTemplateEscalaCompleta(int xPivot, int yPivot, double fatorX, double fatorY) {
+		
+		double[][] matrizTemplateRotacaoCompleta = new double [3][3];
+		
+		matrizTemplateRotacaoCompleta[0][0] = fatorX;
+		matrizTemplateRotacaoCompleta[0][1] = 0;
+		matrizTemplateRotacaoCompleta[0][2] = xPivot * (1 - fatorX);
+		matrizTemplateRotacaoCompleta[1][0] = 0;
+		matrizTemplateRotacaoCompleta[1][1] = fatorY;
+		matrizTemplateRotacaoCompleta[1][2] = yPivot * (1 - fatorY);
+		matrizTemplateRotacaoCompleta[2][0] = 0;
+		matrizTemplateRotacaoCompleta[2][1] = 0;
+		matrizTemplateRotacaoCompleta[2][2] = 1;
+		
+		return matrizTemplateRotacaoCompleta;
+	}
+	
+	public static int[] escalaPontoCompleto(int x1, int y1, int xPivot, int yPivot, double fatorX, double fatorY) {
+
+		double[][] matrizEscala = getMatrizTemplateEscalaCompleta(xPivot, yPivot, fatorX, fatorY);
+		
+		int[][] matrizNovoPonto = { {x1}, {y1}, {1} };
+		
+		double[][] matrizResultado = OperacaoMatriz.multiplicaMatrizes(matrizEscala, matrizNovoPonto);
+		
+		OperacaoMatriz.escreveMatrizNoConsole(matrizResultado, "Matriz Escala Ponto "+ x1 + ", " + y1);
+		
+		int[] novoPonto = {Math.round((float)matrizResultado[0][0]), Math.round((float)matrizResultado[1][0])};
+		
+		return novoPonto;
+	}
+	
+	public static int[] escalaPonto(int x1, int y1, double fatorX, double fatorY) {
+
+		double[][] matrizEscala = getMatrizTemplateEscala(fatorX, fatorY);
+		
+		int[][] matrizNovoPonto = { {x1}, {y1}, {1} };
+		
+		double[][] matrizResultado = OperacaoMatriz.multiplicaMatrizes(matrizEscala, matrizNovoPonto);
+		
+		int[] novoPonto = {Math.round((float)matrizResultado[0][0]), Math.round((float)matrizResultado[1][0])};
+		
+		return novoPonto;
+	}
+	
 	
 	public static int getOctanteDaReta(int x1, int y1, int x2, int y2) {
 		
