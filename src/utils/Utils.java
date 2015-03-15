@@ -167,20 +167,6 @@ public class Utils {
 		return novoPonto;
 	}
 	
-	public static int[] escalaPonto(int x1, int y1, double fatorX, double fatorY) {
-
-		double[][] matrizEscala = getMatrizTemplateEscala(fatorX, fatorY);
-		
-		int[][] matrizNovoPonto = { {x1}, {y1}, {1} };
-		
-		double[][] matrizResultado = OperacaoMatriz.multiplicaMatrizes(matrizEscala, matrizNovoPonto);
-		
-		int[] novoPonto = {Math.round((float)matrizResultado[0][0]), Math.round((float)matrizResultado[1][0])};
-		
-		return novoPonto;
-	}
-	
-	
 	public static int getOctanteDaReta(int x1, int y1, int x2, int y2) {
 		
 		int octante = 1;
